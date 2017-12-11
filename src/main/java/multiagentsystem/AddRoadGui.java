@@ -12,7 +12,7 @@ public class AddRoadGui extends JFrame {
 
     private EnvironmentAgent myAgent;
 
-    private JTextField startField, endField, distanceField;
+    private JTextField startField, endField;
 
     public AddRoadGui(EnvironmentAgent a) {
         super(a.getLocalName());
@@ -24,12 +24,9 @@ public class AddRoadGui extends JFrame {
         p.add(new JLabel("multiagentsystem.Road start point:"));
         startField = new JTextField(15);
         p.add(startField);
-        p.add(new JLabel("multiagentsystem.Road start point:"));
+        p.add(new JLabel("multiagentsystem.Road end point:"));
         endField = new JTextField(15);
         p.add(endField);
-        p.add(new JLabel("multiagentsystem.Road distance:"));
-        distanceField = new JTextField(15);
-        p.add(distanceField);
 
         getContentPane().add(p, BorderLayout.CENTER);
 
@@ -39,11 +36,9 @@ public class AddRoadGui extends JFrame {
                 try {
                     Integer startPoint = Integer.parseInt(startField.getText().trim());
                     Integer endPoint = Integer.parseInt(endField.getText().trim());
-                    Integer distance = Integer.parseInt(distanceField.getText().trim());
-                    myAgent.addRoad(startPoint, endPoint, distance);
+                    myAgent.addRoad(startPoint, endPoint);
                     startField.setText("");
                     endField.setText("");
-                    distanceField.setText("");
                 }
                 catch (Exception e) {
                     JOptionPane.showMessageDialog(AddRoadGui.this, "Invalid values. "+e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
